@@ -1,2 +1,2 @@
 # dbs_mriCONN_predict
-Prediction of outcomes in STN DBS treated PD via various measures of (structural or functional) connectivity in MRI.
+Prediction of outcomes after STN DBS treated PD via measures of functional connectivity in MRI derived from normative connectomes. Cooperation of the First Faculty of Medicine, Charles University, Prague and the Harvard Medical School, Boston.
