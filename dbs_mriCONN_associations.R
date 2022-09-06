@@ -66,7 +66,7 @@ for ( i in t1$outcome ) {
   for ( j in c("gain","perc") ) {
     t1[ t1$outcome==i, j ] <- paste0(
       spearmanRho( as.formula( paste0(i,"_",j,"~R_",i) ), data = d0[ complete.cases( d0[[paste(i,j,sep="_")]] ), ], method = "spearman", ci = T )$rho %>% round(3) %>% sprintf("%.3f",.), " [",
-      spearmanRho( as.formula( paste0(i,"_",j,"~R_",i) ), data = d0[ complete.cases( d0[[paste(i,j,sep="_")]] ), ], method = "spearman", ci = T )$lower.ci %>% round(3) %>% sprintf("%.3f",.), " ,",
+      spearmanRho( as.formula( paste0(i,"_",j,"~R_",i) ), data = d0[ complete.cases( d0[[paste(i,j,sep="_")]] ), ], method = "spearman", ci = T )$lower.ci %>% round(3) %>% sprintf("%.3f",.), ", ",
       spearmanRho( as.formula( paste0(i,"_",j,"~R_",i) ), data = d0[ complete.cases( d0[[paste(i,j,sep="_")]] ), ], method = "spearman", ci = T )$upper.ci %>% round(3) %>% sprintf("%.3f",.), "]"
     )
   }
