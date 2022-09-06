@@ -3,7 +3,7 @@ setwd( dirname(rstudioapi::getSourceEditorContext()$path) )
 
 # list packages to use
 pkgs <- c( "tidyverse", "dplyr", # data wrangling
-           "ggplot2", "patchwork", # plotting
+           "ggplot2", "patchwork", "gridExtra", # plotting
            "rcompanion" # calculate Spearman Rho
            )
 
@@ -74,3 +74,11 @@ for ( i in t1$outcome ) {
 
 # print table 1 as csv
 write.table( t1 %>% rename( "percentage gain" = "perc"), "Tab 1 Spearman's Rho.csv", sep = ",", row.names = F )
+
+# save also as an image
+tableGrob(
+  t1 %>% mutate( outcome = c("DRS-2","BDI-II","MDS-UPDRS III") ) %>% `colnames<-`( c("Outcome","Gain","Percentage") ),
+  rows = NULL, theme = ttheme_minimal( padding = unit(c(8,8), "mm") )
+) %>%
+  grid.arrange() %>%
+  ggsave( "Tab 1 Spearman's Rho with bootstrapped 95 percent CIs.jpg" , plot = . )
